@@ -27,26 +27,6 @@ function getCookie(name) {
     return cookieValue;
 }
 
-export const loadUser = () => (dispatch, getState) => {
-    dispatch({type: USER_LOADING});
-
-
-    axios.post('/authentication/token/', tokenConfig(getState))
-        .then(res => {
-            
-            dispatch({
-                type: USER_LOADED,
-                payload: res.data
-            });
-        })
-        .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status));
-            dispatch({
-                type: AUTH_ERROR
-            });
-        });
-};
-
 export const login = (username, password) => dispatch => {
     const csrftoken = getCookie('csrftoken');
     const config = {
@@ -62,6 +42,7 @@ export const login = (username, password) => dispatch => {
         .then(res => {
             dispatch({
                 type: LOGIN_SUCCESS,
+                username: username,
                 payload: res.data
             });
         })
@@ -88,6 +69,7 @@ export const register = ({username, password, email}) => dispatch => {
         .then(res => {
             dispatch({
                 type: REGISTER_SUCCESS,
+                username: username,
                 payload: res.data
             });
         })

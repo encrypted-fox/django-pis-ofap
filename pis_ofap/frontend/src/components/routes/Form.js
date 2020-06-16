@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
-import {addLead} from '../../actions/leads'
+import {addRequest} from '../../actions/requests'
 
 class Form extends Component {
     state = {
@@ -11,7 +11,7 @@ class Form extends Component {
     };
 
     static propTypes = {
-        addLead: PropTypes.func.isRequired
+        addRequest: PropTypes.func.isRequired
     };
 
     onChange = e => this.setState({[e.target.name]: e.target.value});
@@ -19,8 +19,8 @@ class Form extends Component {
     onSubmit = e => {
         e.preventDefault();
         const {name, email, message} = this.state;
-        const lead = {name, email, message};
-        this.props.addLead(lead);
+        const request = {name, email, message};
+        this.props.addRequest(request);
         this.setState({
             name: '',
             email: '',
@@ -32,7 +32,7 @@ class Form extends Component {
         const {name, email, message} = this.state;
         return (
             <div className='card card-body mt-4 mb-4'>
-                <h2>Add Lead</h2>
+                <h2>Add Request</h2>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
@@ -73,4 +73,4 @@ class Form extends Component {
     }
 }
 
-export default connect(null, {addLead})(Form);
+export default connect(null, {addRequest})(Form);

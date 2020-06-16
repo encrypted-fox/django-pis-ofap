@@ -1,6 +1,6 @@
-export const GET_LEADS = "GET_LEADS";
-export const DELETE_LEAD = "DELETE_LEAD";
-export const ADD_LEAD = "ADD_LEAD";
+export const GET_REQUESTS = "GET_REQUESTS";
+export const DELETE_REQUEST = "DELETE_REQUEST";
+export const ADD_REQUEST = "ADD_REQUEST";
 export const GET_ERRORS = "GET_ERRORS";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const CREATE_MESSAGES = "CREATE_MESSAGES";
@@ -12,3 +12,6 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
+export const GET_AGREEMENTS = "GET_AGREEMENTS";
+export const DELETE_AGREEMENT = "DELETE_AGREEMENT";
+export const ADD_AGREEMENT = "ADD_AGREEMENT";

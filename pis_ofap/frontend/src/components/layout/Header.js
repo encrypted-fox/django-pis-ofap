@@ -18,9 +18,16 @@ class Header extends Component {
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <span className="navbar-text mr-3">
                     <strong>
-                        {user ? `Welcome ${user.username}`: ''}
+                        {user ? `Welcome ${user}`: ''}
                     </strong>
                 </span>
+                
+                <li className="nav-item">
+                    <Link to="/requests" className="nav-link">Requests</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/agreements" className="nav-link">Agreements</Link>
+                </li>
 
                     <button
                         onClick={this.props.logout}
