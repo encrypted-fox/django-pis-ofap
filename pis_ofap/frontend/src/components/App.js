@@ -5,8 +5,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from "react-alert-template-basic";
 
-import Header from './layout/Header'
-import Dashboard from "./routes/Dashboard";
+import Header from './layout/Header';
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from './accounts/Register';
@@ -34,7 +33,6 @@ class App extends Component {
                         <Alerts/>
                         <div className="container">
                             <Switch>
-                                <PrivateRoute exact path='/' component={Requests}/>
                                 <PrivateRoute exact path='/requests' component={Requests}/>
                                 <PrivateRoute exact path='/agreements' component={Agreements}/>
                                 <Route exact path='/register' component={Register}/>
