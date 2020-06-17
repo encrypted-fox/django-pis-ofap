@@ -29,7 +29,7 @@ class Requests extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.requests.map(requests => (
+                    {this.props.requests.map(request => (
                         <tr key={request.id}>
                             <td>{request.id}</td>
                             <td>{request.name}</td>

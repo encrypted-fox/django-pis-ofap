@@ -53,7 +53,7 @@ class Agreements(models.Model):
     id = models.AutoField(primary_key=True)
     manager_id = models.ForeignKey(Employees, related_name='manager_id', on_delete=models.CASCADE, null=False)
     lawyer_id = models.ForeignKey(Employees, related_name='lawyer_id', on_delete=models.CASCADE, null=False)
-    request_id = models.CharField(max_length=100, null=False)
+    request_id = models.ForeignKey(Requests, related_name='request_id', on_delete=models.CASCADE, null=False)
     status = models.CharField(max_length=20, null=False)
 
     class Meta:

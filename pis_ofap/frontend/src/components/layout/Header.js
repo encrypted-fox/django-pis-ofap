@@ -28,6 +28,12 @@ class Header extends Component {
                 <li className="nav-item">
                     <Link to="/agreements" className="nav-link">Agreements</Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/employees" className="nav-link">Employees</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/repositories" className="nav-link">Repositories</Link>
+                </li>
 
                     <button
                         onClick={this.props.logout}

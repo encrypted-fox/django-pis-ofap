@@ -40,6 +40,9 @@ export const login = (username, password) => dispatch => {
 
     axios.post('/authentication/token/', body, config)
         .then(res => {
+            if(!res.data.access_token) {
+                throw new Error({res: res})
+            }
             dispatch({
                 type: LOGIN_SUCCESS,
                 username: username,

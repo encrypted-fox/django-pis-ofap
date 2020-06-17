@@ -15,11 +15,16 @@ import {Provider} from 'react-redux';
 import store from "../store";
 import Requests from './routes/Requests';
 import Agreements from './routes/Agreements';
+import Employees from './routes/Employees';
+import Repositories from './routes/Repositories';
+
 
 const alertOptions = {
     timeout: 5000,
     position: 'top center'
 };
+
+class RedirComp extends Component { render() {return <Redirect to="/login"/>}}
 
 class App extends Component {
 
@@ -33,10 +38,13 @@ class App extends Component {
                         <Alerts/>
                         <div className="container">
                             <Switch>
-                                <PrivateRoute exact path='/requests' component={Requests}/>
+                                <PrivateRoute exact path='/' component={Requests}/>
+                                <PrivateRoute exact path='/employees' component={Employees}/>
                                 <PrivateRoute exact path='/agreements' component={Agreements}/>
+                                <PrivateRoute exact path='/repositories' component={Repositories}/>
                                 <Route exact path='/register' component={Register}/>
                                 <Route exact path='/login' component={Login}/>
+                                <Route component={RedirComp}/>
                             </Switch>
                         </div>
                     </Fragment>

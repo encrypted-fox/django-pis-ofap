@@ -29,7 +29,7 @@ class Agreements extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.agreements.map(agreements => (
+                    {this.props.agreements.map(agreement => (
                         <tr key={agreement.id}>
                             <td>{agreement.id}</td>
                             <td>{agreement.name}</td>
