@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {getRepositories, deleteReposirory} from "../../actions/repositories";
+import RepositoriesForm from '../forms/RepositoriesForm';
+import RepositoriesFormEdit from '../forms/RepositoriesFormEdit';
 
 class Repositories extends Component {
     static propTypes = {
@@ -32,7 +34,8 @@ class Repositories extends Component {
                         <th scope="col">Требования</th>
                         <th scope="col">Описание</th>
                         <th scope="col">Применение</th>
-                        <th scope="col" collspan="2" className="text-left">Дата</th>
+                        <th scope="col" collspan="3" className="text-left">Дата</th>
+                        <th/>
                         <th/>
                     </tr>
                     </thead>
@@ -51,10 +54,14 @@ class Repositories extends Component {
                             <td>{repository.program_description}</td>
                             <td>{repository.usage_description}</td>
                             <td>{repository.date}</td>
+                            <td className=""><RepositoriesFormEdit data={repository}/></td>
                             <td className="text-right"><button onClick={this.props.deleteReposirory.bind(this, repository.id)} className="btn btn-danger btn-sm"> {" "} Удалить</button></td>
                         </tr>))}
                     </tbody>
                 </table>
+
+                <RepositoriesForm/>
+
             </Fragment>
         );
     }

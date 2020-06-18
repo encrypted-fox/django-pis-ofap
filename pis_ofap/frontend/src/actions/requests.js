@@ -2,7 +2,7 @@ import axios from 'axios';
 import {createMessages, returnErrors} from "./messages";
 import {tokenConfig} from "./auth";
 
-import {GET_REQUESTS, DELETE_REQUEST, ADD_REQUEST} from "./types";
+import {GET_REQUESTS, DELETE_REQUEST, ADD_REQUEST, EDIT_REQUEST} from "./types";
 
 export const getRequests = () => (dispatch, getState) => {
     axios.get('/api/requests/', tokenConfig(getState))
@@ -34,6 +34,18 @@ export const addRequest = (request) => (dispatch, getState) => {
             dispatch(createMessages({addRequest: 'Request Added'}));
             dispatch({
                 type: ADD_REQUEST,
+                payload: res.data
+            });
+        })
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+export const editRequest = (id, request) => (dispatch, getState) => {
+    axios.put(`/api/requests/${id}/`, request, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessages({editRequest: 'Request Edited'}));
+            dispatch({
+                type: EDIT_REQUEST,
                 payload: res.data
             });
         })

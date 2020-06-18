@@ -2,7 +2,7 @@ import axios from 'axios';
 import {createMessages, returnErrors} from "./messages";
 import {tokenConfig} from "./auth";
 
-import {GET_REPOSITORIES, ADD_REPOSITORY, DELETE_REPOSITORY} from "./types";
+import {GET_REPOSITORIES, ADD_REPOSITORY, DELETE_REPOSITORY, EDIT_REPOSITORY} from "./types";
 
 export const getRepositories = () => (dispatch, getState) => {
     axios.get('/api/repositories/', tokenConfig(getState))
@@ -34,6 +34,18 @@ export const addReposirory = (repository) => (dispatch, getState) => {
             dispatch(createMessages({addReposirory: 'Reposirory Added'}));
             dispatch({
                 type: ADD_REPOSITORY,
+                payload: res.data
+            });
+        })
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+export const editRepository = (id, repository) => (dispatch, getState) => {
+    axios.put(`/api/repositories/${id}/`, repository, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessages({editRepository: 'Repository Edited'}));
+            dispatch({
+                type: EDIT_REPOSITORY,
                 payload: res.data
             });
         })

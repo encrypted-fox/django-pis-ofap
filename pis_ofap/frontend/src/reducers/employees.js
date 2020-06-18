@@ -1,8 +1,18 @@
-import {GET_EMPLOYEES, DELETE_EMPLOYEE, ADD_EMPLOYEE} from "../actions/types";
+import {GET_EMPLOYEES, DELETE_EMPLOYEE, ADD_EMPLOYEE, EDIT_EMPLOYEE} from "../actions/types";
 
 const initialState = {
     employees: []
 };
+
+const edit = (state, action) => {
+    let arr = state.employees;
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i].id == action.payload.id) {
+            arr[i] = action.payload
+        }
+    }
+    return arr;
+}
 
 export default function(state = initialState, action) {
     switch(action.type) {
@@ -20,6 +30,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 employees: [...state.employees, action.payload]
+            };
+        case EDIT_EMPLOYEE:
+            return {
+                ...state,
+                employees: edit(state, action)
             };
         default: return state;
     }

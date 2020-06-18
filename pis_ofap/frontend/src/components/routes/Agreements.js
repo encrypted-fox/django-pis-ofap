@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {getAgreements, deleteAgreement} from "../../actions/agreements";
+import AgreementsForm from "../forms/AgreementsForm";
+import AgreementsFormEdit from '../forms/AgreementsFormEdit';
 
 class Agreements extends Component {
     static propTypes = {
@@ -17,6 +19,7 @@ class Agreements extends Component {
     render() {
         return (
             <Fragment>
+
                 <h2>Договоры</h2>
                 <table className="table table-striped table-borderless">
                     <thead className="thead-dark">
@@ -25,7 +28,8 @@ class Agreements extends Component {
                         <th scope="col">№ менеджера</th>
                         <th scope="col">№ юриста</th>
                         <th scope="col">№ запроса</th>
-                        <th scope="col" collspan="2" className="text-left">Статус</th>
+                        <th scope="col" collspan="3" className="text-left">Статус</th>
+                        <th/>
                         <th/>
                     </tr>
                     </thead>
@@ -37,10 +41,15 @@ class Agreements extends Component {
                             <td>{agreement.lawyer_id}</td>
                             <td>{agreement.request_id}</td>
                             <td>{agreement.status}</td>
+                            <td className=""><AgreementsFormEdit data={agreement}/></td>
                             <td className="text-right"><button onClick={this.props.deleteAgreement.bind(this, agreement.id)} className="btn btn-danger btn-sm"> {" "} Удалить</button></td>
                         </tr>))}
                     </tbody>
                 </table>
+
+               
+                <AgreementsForm/>
+
             </Fragment>
         );
     }

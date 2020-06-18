@@ -2,7 +2,8 @@ import axios from 'axios';
 import {createMessages, returnErrors} from "./messages";
 import {tokenConfig} from "./auth";
 
-import {GET_EMPLOYEES, ADD_EMPLOYEE, DELETE_EMPLOYEE} from "./types";
+import {GET_EMPLOYEES, ADD_EMPLOYEE, DELETE_EMPLOYEE, EDIT_EMPLOYEE} from "./types";
+import employees from '../reducers/employees';
 
 export const getEmployees = () => (dispatch, getState) => {
     axios.get('/api/employees/', tokenConfig(getState))
@@ -41,9 +42,9 @@ export const addEmployee = (employee) => (dispatch, getState) => {
 };
 
 export const editEmployee = (id, employee) => (dispatch, getState) => {
-    axios.put(`/api/employees/${id}`, employee, tokenConfig(getState))
+    axios.put(`/api/employees/${id}/`, employee, tokenConfig(getState))
         .then(res => {
-            dispatch(createMessages({editEmployee: 'Employee Edited'}));
+            dispatch(createMessages({editEmloyee: 'Employee Edited'}));
             dispatch({
                 type: EDIT_EMPLOYEE,
                 payload: res.data
