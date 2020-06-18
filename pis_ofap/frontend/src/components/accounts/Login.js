@@ -30,10 +30,10 @@ class Login extends Component {
         return (
             <div className="col-md-6 m-auto">
                 <div className="card card-body mt-5">
-                    <h2 className="text-center">Login</h2>
+                    <h2 className="text-center">Вход</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>Логин</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -43,7 +43,7 @@ class Login extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Password</label>
+                            <label>Пароль</label>
                             <input
                                 type="password"
                                 className="form-control"
@@ -54,11 +54,11 @@ class Login extends Component {
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">
-                                Login
+                                Войти
                             </button>
                         </div>
                         <p>
-                            Don't have an account? <Link to="/register">Register</Link>
+                            Ещё нет аккаунта? <Link to="/register">Зарегистрируйтесь</Link>
                         </p>
                     </form>
                 </div>

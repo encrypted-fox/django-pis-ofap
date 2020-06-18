@@ -17,25 +17,27 @@ class Agreements extends Component {
     render() {
         return (
             <Fragment>
-                <h2>Agreements</h2>
-                <table className="table table-stripped">
-                    <thead>
+                <h2>Договоры</h2>
+                <table className="table table-striped table-borderless">
+                    <thead className="thead-dark">
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Message</th>
+                    <th scope="col">#</th>
+                        <th scope="col">№ менеджера</th>
+                        <th scope="col">№ юриста</th>
+                        <th scope="col">№ запроса</th>
+                        <th scope="col" collspan="2" className="text-left">Статус</th>
                         <th/>
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.agreements.map(agreement => (
                         <tr key={agreement.id}>
-                            <td>{agreement.id}</td>
-                            <td>{agreement.name}</td>
-                            <td>{agreement.email}</td>
-                            <td>{agreement.message}</td>
-                            <td><button onClick={this.props.deleteAgreement.bind(this, agreement.id)} className="btn btn-danger btn-sm"> {" "} Delete</button></td>
+                            <td scope="row">{agreement.id}</td> 
+                            <td>{agreement.manager_id}</td>
+                            <td>{agreement.lawyer_id}</td>
+                            <td>{agreement.request_id}</td>
+                            <td>{agreement.status}</td>
+                            <td className="text-right"><button onClick={this.props.deleteAgreement.bind(this, agreement.id)} className="btn btn-danger btn-sm"> {" "} Удалить</button></td>
                         </tr>))}
                     </tbody>
                 </table>

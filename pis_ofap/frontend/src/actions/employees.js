@@ -39,3 +39,15 @@ export const addEmployee = (employee) => (dispatch, getState) => {
         })
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
+
+export const editEmployee = (id, employee) => (dispatch, getState) => {
+    axios.put(`/api/employees/${id}`, employee, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessages({editEmployee: 'Employee Edited'}));
+            dispatch({
+                type: EDIT_EMPLOYEE,
+                payload: res.data
+            });
+        })
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};

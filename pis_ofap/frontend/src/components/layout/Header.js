@@ -18,27 +18,27 @@ class Header extends Component {
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <span className="navbar-text mr-3">
                     <strong>
-                        {user ? `Welcome ${user}`: ''}
+                        {user ? `Добро пожалловать, ${user}`: ''}
                     </strong>
                 </span>
                 
                 <li className="nav-item">
-                    <Link to="/requests" className="nav-link">Requests</Link>
+                    <Link to="/requests" className="nav-link">Запросы</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/agreements" className="nav-link">Agreements</Link>
+                    <Link to="/agreements" className="nav-link">Договоры</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/employees" className="nav-link">Employees</Link>
+                    <Link to="/employees" className="nav-link">Работники</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/repositories" className="nav-link">Repositories</Link>
+                    <Link to="/repositories" className="nav-link">Реестр</Link>
                 </li>
 
                     <button
                         onClick={this.props.logout}
                         className="nav-link btn btn-info btn-sm text-light">
-                        Logout
+                        Выход
                     </button>
             </ul>
         );
@@ -46,18 +46,18 @@ class Header extends Component {
         const guestLinks = (
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className="nav-item">
-                    <Link to="/register" className="nav-link">Register</Link>
+                    <Link to="/register" className="nav-link">Регистрация</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/login" className="nav-link">Login</Link>
+                    <Link to="/login" className="nav-link">Вход</Link>
                 </li>
             </ul>
         );
 
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
                 <div className="container">
-                    <a className="navbar-brand" href="#">Navbar</a>
+                    <a className="navbar-brand" href="/">На главную</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                             aria-label="Toggle navigation">

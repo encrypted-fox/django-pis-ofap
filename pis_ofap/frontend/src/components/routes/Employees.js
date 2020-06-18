@@ -17,25 +17,25 @@ class Employees extends Component {
     render() {
         return (
             <Fragment>
-                <h2>Employees</h2>
-                <table className="table table-stripped">
-                    <thead>
+                <h2>Работники</h2>
+                <table className="table table-striped table-borderless">
+                    <thead className="thead-dark">
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Message</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Логин</th>
+                        <th scope="col" collspan="2" className="text-left">Уровень доступа</th>
                         <th/>
                     </tr>
                     </thead>
                     <tbody>
                     {this.props.employees.map(employee => (
                         <tr key={employee.id}>
-                            <td>{employee.id}</td>
+                            <td scope="row">{employee.id}</td>
                             <td>{employee.name}</td>
-                            <td>{employee.email}</td>
-                            <td>{employee.message}</td>
-                            <td><button onClick={this.props.deleteEmployee.bind(this, employee.id)} className="btn btn-danger btn-sm"> {" "} Delete</button></td>
+                            <td>{employee.login}</td>
+                            <td>{employee.access_level}</td>
+                            <td className="text-right"><button onClick={this.props.deleteEmployee.bind(this, employee.id)} className="btn btn-danger btn-sm"> {" "} Удалить</button></td>
                         </tr>))}
                     </tbody>
                 </table>
